@@ -1,7 +1,7 @@
-import RegisterForm from "../Components/RegisterForm";
+import AuthenticationForms from "../Components/AuthenticationForms/Index";
 
 const Home = () => {
-	return <RegisterForm />;
+	return <AuthenticationForms />;
 };
 
 export default Home;
