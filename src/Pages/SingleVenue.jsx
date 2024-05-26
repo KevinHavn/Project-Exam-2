@@ -62,7 +62,7 @@ const SingleVenue = () => {
 
 	return (
 		<div className="container mx-auto p-4">
-			<div className="bg-white rounded-lg shadow-md p-4 mb-4">
+			<div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-4 mb-4">
 				{media && media.length > 0 && (
 					<div className="mb-4">
 						<img

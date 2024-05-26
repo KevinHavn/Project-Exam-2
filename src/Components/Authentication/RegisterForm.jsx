@@ -220,7 +220,7 @@ const RegisterForm = ({ switchToLogin }) => {
 				<div className="mb-4">
 					<button
 						type="submit"
-						className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+						className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md ">
 						Register
 					</button>
 				</div>
@@ -228,7 +228,7 @@ const RegisterForm = ({ switchToLogin }) => {
 			{submitStatus && (
 				<p
 					className={`mt-4 text-center ${
-						submitStatus.startsWith("Error") ? "text-red-500" : "text-green-500"
+						submitStatus.startsWith("Error") ? "text-red-700" : "text-green-700"
 					}`}>
 					{submitStatus}
 				</p>
@@ -237,7 +237,7 @@ const RegisterForm = ({ switchToLogin }) => {
 				Already have an account?{" "}
 				<button
 					onClick={switchToLogin}
-					className="text-blue-500 hover:underline">
+					className="text-blue-700 hover:text-blue-800 hover:underline">
 					Log In
 				</button>
 			</label>

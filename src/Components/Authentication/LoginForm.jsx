@@ -75,7 +75,7 @@ const LoginForm = ({ switchToRegister }) => {
 				<div className="mb-4">
 					<button
 						type="submit"
-						className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+						className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md ">
 						Log In
 					</button>
 				</div>
@@ -92,7 +92,7 @@ const LoginForm = ({ switchToRegister }) => {
 				Don&apos;t have an account?{" "}
 				<button
 					onClick={switchToRegister}
-					className="text-blue-500 hover:underline">
+					className="text-blue-700 hover:text-blue-800 hover:underline">
 					Register
 				</button>
 			</label>
