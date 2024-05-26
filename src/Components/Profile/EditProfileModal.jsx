@@ -9,7 +9,6 @@ const EditProfileModal = ({ user, onClose }) => {
 	const { login } = useContext(UserContext);
 	const [formData, setFormData] = useState({
 		avatar: { url: user.avatar.url, alt: user.avatar.alt },
-		banner: { url: user.banner.url, alt: user.banner.alt },
 		bio: user.bio,
 		venueManager: user.venueManager,
 	});
@@ -21,7 +20,7 @@ const EditProfileModal = ({ user, onClose }) => {
 				...prevFormData,
 				[name]: checked,
 			}));
-		} else if (name.startsWith("avatar") || name.startsWith("banner")) {
+		} else if (name.startsWith("avatar")) {
 			const field = name.split(".")[1];
 			setFormData((prevFormData) => ({
 				...prevFormData,
@@ -97,34 +96,6 @@ const EditProfileModal = ({ user, onClose }) => {
 						id="avatarAlt"
 						name="avatar.alt"
 						value={formData.avatar.alt}
-						onChange={handleChange}
-						className="w-full px-3 py-2 border rounded-md"
-					/>
-				</div>
-
-				<div className="mb-4">
-					<label htmlFor="bannerUrl" className="block  font-bold mb-2">
-						Banner URL
-					</label>
-					<input
-						type="url"
-						id="bannerUrl"
-						name="banner.url"
-						value={formData.banner.url}
-						onChange={handleChange}
-						className="w-full px-3 py-2 border rounded-md"
-					/>
-				</div>
-
-				<div className="mb-4">
-					<label htmlFor="bannerAlt" className="block  font-bold mb-2">
-						Banner Alt Text
-					</label>
-					<input
-						type="text"
-						id="bannerAlt"
-						name="banner.alt"
-						value={formData.banner.alt}
 						onChange={handleChange}
 						className="w-full px-3 py-2 border rounded-md"
 					/>

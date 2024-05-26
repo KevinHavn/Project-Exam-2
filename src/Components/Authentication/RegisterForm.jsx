@@ -12,8 +12,6 @@ const RegisterForm = ({ switchToLogin }) => {
 		bio: "",
 		avatarUrl: "",
 		avatarAlt: "",
-		bannerUrl: "",
-		bannerAlt: "",
 		venueManager: false,
 	});
 
@@ -41,10 +39,6 @@ const RegisterForm = ({ switchToLogin }) => {
 			avatar: {
 				url: formData.avatarUrl,
 				alt: formData.avatarAlt,
-			},
-			banner: {
-				url: formData.bannerUrl,
-				alt: formData.bannerAlt,
 			},
 			venueManager: formData.venueManager,
 		};
@@ -172,36 +166,7 @@ const RegisterForm = ({ switchToLogin }) => {
 						className="w-full px-3 py-2 border rounded-md"
 					/>
 				</div>
-				<div className="mb-4">
-					<label
-						htmlFor="bannerUrl"
-						className="block text-gray-700 font-bold mb-2">
-						Banner URL
-					</label>
-					<input
-						type="url"
-						id="bannerUrl"
-						name="bannerUrl"
-						value={formData.bannerUrl}
-						onChange={handleChange}
-						className="w-full px-3 py-2 border rounded-md"
-					/>
-				</div>
-				<div className="mb-4">
-					<label
-						htmlFor="bannerAlt"
-						className="block text-gray-700 font-bold mb-2">
-						Banner Alt Text
-					</label>
-					<input
-						type="text"
-						id="bannerAlt"
-						name="bannerAlt"
-						value={formData.bannerAlt}
-						onChange={handleChange}
-						className="w-full px-3 py-2 border rounded-md"
-					/>
-				</div>
+				<div className="mb-4"></div>
 				<div className="mb-4">
 					<label
 						htmlFor="venueManager"
