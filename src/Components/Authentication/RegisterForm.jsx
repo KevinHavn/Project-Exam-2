@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { loginUser } from "./Login";
 
 const RegisterForm = ({ switchToLogin }) => {
 	const [formData, setFormData] = useState({
@@ -66,44 +67,10 @@ const RegisterForm = ({ switchToLogin }) => {
 				throw new Error(errorMessage);
 			}
 
-			const loginPayload = {
-				email: formData.email,
-				password: formData.password,
-			};
-
-			const loginResponse = await fetch(
-				"https://v2.api.noroff.dev/auth/login?_holidaze=true",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(loginPayload),
-				}
-			);
-
-			const loginData = await loginResponse.json();
-
-			if (!loginResponse.ok) {
-				const loginErrorMessage = loginData.errors
-					? loginData.errors.map((err) => err.message).join(", ")
-					: loginData.message || JSON.stringify(loginData);
-				throw new Error(loginErrorMessage);
-			}
-
-			const userData = {
-				token: loginData.token,
-				name: loginData.data.name,
-				email: loginData.data.email,
-				bio: loginData.data.bio,
-				avatar: loginData.data.avatar,
-				banner: loginData.data.banner,
-				venueManager: loginData.data.venueManager || false, 
-			};
-			login(userData);
+			await loginUser(formData.email, formData.password, login);
 
 			setSubmitStatus("Registration and Login successful.");
-			navigate("/venues"); 
+			navigate("/venues");
 		} catch (error) {
 			setSubmitStatus(`Error: ${error.message}`);
 		}

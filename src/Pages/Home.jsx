@@ -1,4 +1,4 @@
-import AuthenticationForms from "../Components/AuthenticationForms/Index";
+import AuthenticationForms from "../Components/Authentication/Index";
 
 const Home = () => {
 	return <AuthenticationForms />;
