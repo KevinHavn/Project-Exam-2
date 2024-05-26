@@ -6,6 +6,7 @@ import About from "./Pages/About";
 import Venues from "./Pages/Venues";
 import VenueManager from "./Pages/VenueManager";
 import Profile from "./Pages/Profile";
+import SingleVenue from "./Pages/SingleVenue";
 
 const App = () => {
 	return (
@@ -17,6 +18,7 @@ const App = () => {
 					<Route path="/venues" element={<Venues />} />
 					<Route path="/venue-manager" element={<VenueManager />}></Route>
 					<Route path="/profile" element={<Profile></Profile>}></Route>
+					<Route path="/venues/:id" element={<SingleVenue />} />
 				</Routes>
 			</Layout>
 		</UserProvider>
