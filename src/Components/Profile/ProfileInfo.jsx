@@ -11,11 +11,11 @@ const ProfileInfo = ({ user, onEditProfileClick }) => {
 				/>
 			</div>
 			<h2 className="text-2xl font-bold text-center mb-2">{user.name}</h2>
-			<p className="text-gray-600 text-center mb-4">{user.bio}</p>
+			<p className="text-center mb-4">{user.bio}</p>
 			<div className="text-center">
 				<button
 					onClick={onEditProfileClick}
-					className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+					className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md ">
 					Edit Profile
 				</button>
 			</div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
+import { Link } from "react-router-dom";
 import Modal from "../Modal";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -88,7 +89,7 @@ const BookingList = ({ userName }) => {
 
 	return (
 		<div className="bg-white p-4 shadow-md rounded-md h-96 overflow-y-auto">
-			<h2 className="text-xl font-bold mb-4">Your Bookings</h2>
+			<h2 className="text-xl font-bold mb-4">Your Upcoming Bookings</h2>
 			{loading ? (
 				<p>Loading...</p>
 			) : error ? (
@@ -144,7 +145,7 @@ const BookingList = ({ userName }) => {
 			)}
 			{showModal && selectedBooking && (
 				<Modal onClose={handleCloseModal}>
-					<div>
+					<div className="max-w-lg mx-auto bg-white p-4 rounded-md shadow-md">
 						<h2 className="text-xl font-bold mb-2">
 							{selectedBooking.venue?.name || "No venue name"}
 						</h2>
@@ -169,11 +170,18 @@ const BookingList = ({ userName }) => {
 								selectedBooking.venue?.location.city || "No city"
 							}, ${selectedBooking.venue?.location.country || "No country"}`}
 						</p>
-						<button
-							onClick={handleDeleteBooking}
-							className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
-							Delete Booking
-						</button>
+						<div className="flex justify-between mt-4">
+							<Link
+								to={`/venues/${selectedBooking.venue?.id}`}
+								className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mr-2">
+								View Details
+							</Link>
+							<button
+								onClick={handleDeleteBooking}
+								className="bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded">
+								Delete Booking
+							</button>
+						</div>
 					</div>
 				</Modal>
 			)}

@@ -30,11 +30,9 @@ const VenuesCard = () => {
 			const result = await response.json();
 			if (result.data.length > 0) {
 				setVenues((prevVenues) => {
-					// Create a map of current venues by ID
 					const venueMap = new Map(
 						prevVenues.map((venue) => [venue.id, venue])
 					);
-					// Add new venues, ensuring no duplicates
 					result.data.forEach((venue) => venueMap.set(venue.id, venue));
 					return Array.from(venueMap.values());
 				});
@@ -66,6 +64,9 @@ const VenuesCard = () => {
 	return (
 		<div className="container mx-auto p-4">
 			<div className="mb-4">
+				<label htmlFor="search" className="block text-gray-700 font-bold mb-2">
+					Search Venues
+				</label>
 				<input
 					type="text"
 					placeholder="Search venues..."
@@ -89,7 +90,7 @@ const VenuesCard = () => {
 							</div>
 							<div className="mb-2">
 								<h2 className="text-xl font-semibold truncate">{venue.name}</h2>
-								<p className="text-gray-600 overflow-hidden overflow-ellipsis whitespace-nowrap">
+								<p className="text-gray-800 overflow-hidden overflow-ellipsis whitespace-nowrap">
 									{venue.description}
 								</p>
 							</div>
@@ -100,7 +101,7 @@ const VenuesCard = () => {
 							</div>
 							<div className="mb-2">
 								<h3 className="text-lg font-semibold">Location:</h3>
-								<p className="text-gray-600 truncate">
+								<p className="text-gray-800 truncate">
 									{venue.location.address}, {venue.location.city},{" "}
 									{venue.location.country}
 								</p>
@@ -122,7 +123,7 @@ const VenuesCard = () => {
 				<div className="text-center">
 					<button
 						onClick={handleViewMore}
-						className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+						className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md ">
 						View More
 					</button>
 				</div>

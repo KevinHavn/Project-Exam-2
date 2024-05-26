@@ -41,7 +41,7 @@ const VenueManager = () => {
 					<VenueForm />
 				</div>
 				<div>
-					<VenueList venues={venues} />
+					<VenueList venues={venues} setVenues={setVenues} />
 				</div>
 			</div>
 		</div>

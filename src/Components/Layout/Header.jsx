@@ -5,10 +5,15 @@ import { UserContext } from "../UserContext";
 const Header = () => {
 	const { user, logout } = useContext(UserContext);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const dropdownRef = useRef(null);
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen(!isDropdownOpen);
+	};
+
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const handleClickOutside = (event) => {
@@ -25,21 +30,41 @@ const Header = () => {
 	}, []);
 
 	return (
-		<header className="bg-blue-600 p-4 text-white">
+		<header className="bg-blue-700 p-4 text-white">
 			<div className="container mx-auto flex justify-between items-center">
-				<h1 className="text-2xl font-bold">Holidaze</h1>
-				<nav>
-					<ul className="flex space-x-4 items-center">
-						<li>
-							<Link to="/" className="hover:text-gray-300">
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link to="/about" className="hover:text-gray-300">
-								About
-							</Link>
-						</li>
+				<Link to="/venues">
+					<h1 className="text-2xl font-bold logo hover:text-rose-200">
+						Holidaze
+					</h1>
+				</Link>
+				<button
+					className="block md:hidden text-white focus:outline-none"
+					onClick={toggleMenu}>
+					<svg
+						className="w-6 h-6"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
+							d="M4 6h16M4 12h16m-7 6h7"></path>
+					</svg>
+				</button>
+				<nav
+					className={`${
+						isMenuOpen ? "block" : "hidden"
+					} md:flex md:items-center`}>
+					<ul className="flex flex-col md:flex-row md:space-x-4 items-center">
+						{!user && (
+							<li>
+								<Link to="/" className="hover:text-gray-300">
+									Log in
+								</Link>
+							</li>
+						)}
 						<li>
 							<Link to="/venues" className="hover:text-gray-300">
 								Venues
@@ -69,7 +94,7 @@ const Header = () => {
 										<Link
 											to="/profile"
 											className="block px-4 py-2 text-sm hover:bg-gray-200">
-											Profile
+											Profile & Bookings
 										</Link>
 										{user.venueManager && (
 											<Link
