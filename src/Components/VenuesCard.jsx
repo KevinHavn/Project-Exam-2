@@ -63,7 +63,7 @@ const VenuesCard = () => {
 
 	return (
 		<div className="container mx-auto p-4">
-			<div className="mb-4">
+			<div className="p-4">
 				<label htmlFor="search" className="block text-gray-700 font-bold mb-2">
 					Search Venues
 				</label>
@@ -79,8 +79,8 @@ const VenuesCard = () => {
 			{error && <p>Error: {error}</p>}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
 				{venues.map((venue) => (
-					<Link to={`/venues/${venue.id}`} key={venue.id}>
-						<div className="bg-white rounded-lg shadow-md p-4">
+					<Link to={`/venues/${venue.id}`} key={venue.id} className="h-full">
+						<div className="bg-white rounded-lg shadow-md p-4 flex flex-col h-full">
 							<div className="mb-4">
 								<img
 									src={venue.media[0]?.url}
@@ -88,14 +88,16 @@ const VenuesCard = () => {
 									className="w-full h-48 object-cover rounded-t-lg"
 								/>
 							</div>
-							<div className="mb-2">
+							<div className="mb-2 flex-grow">
 								<h2 className="text-xl font-semibold truncate">{venue.name}</h2>
 								<p className="text-gray-800 overflow-hidden overflow-ellipsis whitespace-nowrap">
 									{venue.description}
 								</p>
 							</div>
 							<div className="mb-2">
-								<p className="text-gray-800 font-bold">Price: ${venue.price}</p>
+								<p className="text-gray-800 font-bold">
+									Price per night: ${venue.price}
+								</p>
 								<p className="text-gray-800">Max Guests: {venue.maxGuests}</p>
 								<p className="text-gray-800">Rating: {venue.rating}</p>
 							</div>
@@ -123,7 +125,7 @@ const VenuesCard = () => {
 				<div className="text-center">
 					<button
 						onClick={handleViewMore}
-						className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md ">
+						className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded-md">
 						View More
 					</button>
 				</div>
